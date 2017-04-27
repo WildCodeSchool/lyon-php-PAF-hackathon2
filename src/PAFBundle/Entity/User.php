@@ -42,7 +42,7 @@ class User
      *
      * @ORM\Column(name="gender", type="string", length=255)
      */
-    private $gender;
+    private $gender = "Undefined";
 
     /**
      * @var

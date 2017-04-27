@@ -2,6 +2,7 @@
 
 namespace PAFBundle\Controller;
 
+use PAFBundle\Entity\User;
 use PAFBundle\Form\LoginForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,13 +17,16 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
         $login = $request->getSession();
+        $user = new User();
 
-        $formLogin = $this->createForm(LoginForm::class);
+        $formLogin = $this->createForm(LoginForm::class, $user);
         $formLogin->handleRequest($request);
         if ($formLogin->isSubmitted() && $formLogin->isValid()) {
-            $data = $formLogin->getData();
-            $login->set('name', $data['name']);
-            $login->getFlashBag()->add('success', 'Bienvenue '.$data['name'].' sur PAFLeChat !');
+            $login->getFlashBag()->add('success', 'Bienvenue '.$user->getName().' sur PAFLeChat !');
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             $url = $this->generateUrl('chat');
             return $this->redirect($url);
