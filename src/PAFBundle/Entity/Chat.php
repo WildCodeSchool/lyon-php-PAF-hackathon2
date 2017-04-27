@@ -3,7 +3,7 @@
 namespace PAFBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ChatForm
@@ -23,13 +23,6 @@ class Chat
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="indicator", type="datetime")
@@ -40,8 +33,21 @@ class Chat
      * @var string
      *
      * @ORM\Column(name="message", type="text")
+     * @Assert\NotBlank()
      */
     private $message;
+
+    /**
+    * @var int
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="chats")
+    */
+    private $user;
+
+    /**
+     * @var int
+     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="channels")
+     */
+    private $channel;
 
 
     /**
@@ -129,5 +135,53 @@ class Chat
     public function __construct()
     {
         $this->indicator = new \DateTime();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \PAFBundle\Entity\User $user
+     *
+     * @return Chat
+     */
+    public function setUser(\PAFBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \PAFBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set channel
+     *
+     * @param \PAFBundle\Entity\Channel $channel
+     *
+     * @return Chat
+     */
+    public function setChannel(\PAFBundle\Entity\Channel $channel = null)
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Get channel
+     *
+     * @return \PAFBundle\Entity\Channel
+     */
+    public function getChannel()
+    {
+        return $this->channel;
     }
 }
