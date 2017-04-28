@@ -35,12 +35,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255)
-     * @Assert\File(mimeTypes={ "image/*" })
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false
-     * )
+     * @ORM\Column(name="picture", type="string")
      */
     private $picture;
 
@@ -49,7 +44,7 @@ class User
      *
      * @ORM\Column(name="gender", type="string", length=255)
      */
-    private $gender = "Undefined";
+    private $gender;
 
     /**
      * @var
@@ -145,6 +140,7 @@ class User
     {
         $this->chats = new ArrayCollection();
         $this->picture = "default.png";
+        $this->gender = "Undefined";
     }
 
     /**

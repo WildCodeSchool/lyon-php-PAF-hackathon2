@@ -27,15 +27,19 @@ class UserController extends Controller
      */
     public function editAction(Request $request, $id)
     {
+        $login = $request->getSession();
+
         $user = $this->getDoctrine()->getRepository('PAFBundle:User')->find($id);
         $formEdit = $this->createForm(UserEditForm::class, $user);
         $formEdit->handleRequest($request);
         if ($formEdit->isValid() && $formEdit->isSubmitted()) {
+            $login->set('name', $user->getName());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
 
-            $url = $this->generateUrl('account_page', array('id' => $id));
+            $url = $this->generateUrl('chat');
             return $this->redirect($url);
         }
 

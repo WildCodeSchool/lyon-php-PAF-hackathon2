@@ -133,6 +133,7 @@ class User
     {
         return $this->gender;
     }
+
     /**
      * Constructor
      */

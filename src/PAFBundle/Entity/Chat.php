@@ -44,13 +44,6 @@ class Chat
     private $user;
 
     /**
-     * @var int
-     * @ORM\ManyToOne(targetEntity="Channel", inversedBy="channels")
-     */
-    private $channel;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -135,29 +128,5 @@ class Chat
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set channel
-     *
-     * @param Channel $channel
-     *
-     * @return Chat
-     */
-    public function setChannel(Channel $channel = null)
-    {
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    /**
-     * Get channel
-     *
-     * @return Channel
-     */
-    public function getChannel()
-    {
-        return $this->channel;
     }
 }
