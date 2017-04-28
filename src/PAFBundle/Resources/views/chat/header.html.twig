@@ -6,9 +6,16 @@
                 <li><a href="/chat"><i class="material-icons">loop</i></a></li>
             </ul>
             <ul class="right hide-on-med-and-down">
-                <li> Welcome <strong>{{ name }}</strong>,</li>
-                <li><a href="/">Disconnect</a></li>
+                <li><a href="/"><i class="material-icons">power_settings_new</i></a></li>
+                <li><a href="/account/{{ user.id }}"><i class="material-icons left">account_circle</i><strong>Welcome {{ user.name|capitalize }}</strong></a></li>
             </ul>
         </div>
     </nav>
 </div>
+
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+</ul>

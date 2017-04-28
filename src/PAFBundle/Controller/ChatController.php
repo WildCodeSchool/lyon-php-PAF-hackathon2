@@ -21,6 +21,7 @@ class ChatController extends Controller
         $name = $login->get('name');
 
         $chats = $this->getDoctrine()->getRepository('PAFBundle:Chat')->findAll();
+        $user = $this->getDoctrine()->getRepository('PAFBundle:User')->findOneBy(array('name' => $name));
 
         $chat = new Chat();
         $formChat = $this->createForm(ChatForm::class, $chat);
@@ -35,8 +36,9 @@ class ChatController extends Controller
             return $this->redirect($url);
         }
 
-        return $this->render('PAFBundle::layout.html.twig', array(
+        return $this->render('PAFBundle:chat:index.html.twig', array(
             'name'      => $name,
+            'user'      => $user,
             'chats'     => $chats,
             'formChat'  => $formChat->createView(),
         ));

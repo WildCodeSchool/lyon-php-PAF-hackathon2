@@ -1,0 +1,19 @@
+{% extends 'PAFBundle::base.html.twig' %}
+
+{% block body %}
+    {% include 'PAFBundle:chat:header.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <h2>Edit your account</h2>
+            <div class="divider"></div>
+            {{ form_start(formEdit, {'attr': {'class': 'col s12'}}) }}
+                {{ form_errors(formEdit) }}
+                {{ form_errors(formEdit.name) }}
+                {{ form_widget(formEdit.name) }}
+                {{ form_widget(formEdit.save) }}
+            {{ form_end(formEdit) }}
+        </div>
+    </div>
+{% endblock %}
+
+

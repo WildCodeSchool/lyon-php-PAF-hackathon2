@@ -4,9 +4,10 @@
         <meta charset="UTF-8" />
         {#<meta http-equiv="refresh" content="20">#}
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}"/>
-        <link type="text/css" rel="stylesheet" href="{{ asset('css/preloader.css') }}"/>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+        {% endblock %}
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -21,5 +22,6 @@
                 integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
                 crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
