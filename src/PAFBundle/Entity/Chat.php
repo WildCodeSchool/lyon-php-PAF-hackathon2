@@ -61,30 +61,6 @@ class Chat
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Chat
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set indicator
      *
      * @param \DateTime $indicator
@@ -140,11 +116,11 @@ class Chat
     /**
      * Set user
      *
-     * @param \PAFBundle\Entity\User $user
+     * @param User $user
      *
      * @return Chat
      */
-    public function setUser(\PAFBundle\Entity\User $user = null)
+    public function setUser(User $user = null)
     {
         $this->user = $user;
 
@@ -154,7 +130,7 @@ class Chat
     /**
      * Get user
      *
-     * @return \PAFBundle\Entity\User
+     * @return User
      */
     public function getUser()
     {
@@ -164,11 +140,11 @@ class Chat
     /**
      * Set channel
      *
-     * @param \PAFBundle\Entity\Channel $channel
+     * @param Channel $channel
      *
      * @return Chat
      */
-    public function setChannel(\PAFBundle\Entity\Channel $channel = null)
+    public function setChannel(Channel $channel = null)
     {
         $this->channel = $channel;
 
@@ -178,7 +154,7 @@ class Chat
     /**
      * Get channel
      *
-     * @return \PAFBundle\Entity\Channel
+     * @return Channel
      */
     public function getChannel()
     {

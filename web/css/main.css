@@ -3,3 +3,11 @@
 .nav-wrapper .brand-logo img {
     height: 64px;
 }
+
+header, main, footer {
+    padding-left: 300px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}

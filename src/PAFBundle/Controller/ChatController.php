@@ -35,7 +35,7 @@ class ChatController extends Controller
             return $this->redirect($url);
         }
 
-        return $this->render('@PAF/chat/index.html.twig', array(
+        return $this->render('PAFBundle::layout.html.twig', array(
             'name'      => $name,
             'chats'     => $chats,
             'formChat'  => $formChat->createView(),

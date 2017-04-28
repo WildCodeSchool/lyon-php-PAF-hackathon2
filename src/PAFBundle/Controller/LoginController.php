@@ -23,6 +23,7 @@ class LoginController extends Controller
         $formLogin->handleRequest($request);
         if ($formLogin->isSubmitted() && $formLogin->isValid()) {
             $login->getFlashBag()->add('success', 'Bienvenue '.$user->getName().' sur PAFLeChat !');
+            $login->set('name', $user->getName());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

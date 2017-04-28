@@ -2,12 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="refresh" content="20">
+        {#<meta http-equiv="refresh" content="20">#}
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/preloader.css') }}"/>
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />

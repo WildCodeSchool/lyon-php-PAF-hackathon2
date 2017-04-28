@@ -2,6 +2,7 @@
 
 namespace PAFBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -67,5 +68,46 @@ class Channel
     public function getTitle()
     {
         return $this->title;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->channels = new ArrayCollection();
+    }
+
+    /**
+     * Add channel
+     *
+     * @param Chat $channel
+     *
+     * @return Channel
+     */
+    public function addChannel(Chat $channel)
+    {
+        $this->channels[] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Remove channel
+     *
+     * @param Chat $channel
+     */
+    public function removeChannel(Chat $channel)
+    {
+        $this->channels->removeElement($channel);
+    }
+
+    /**
+     * Get channels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChannels()
+    {
+        return $this->channels;
     }
 }

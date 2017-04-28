@@ -2,6 +2,7 @@
 
 namespace PAFBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -73,17 +74,17 @@ class Channel
      */
     public function __construct()
     {
-        $this->channels = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->channels = new ArrayCollection();
     }
 
     /**
      * Add channel
      *
-     * @param \PAFBundle\Entity\Chat $channel
+     * @param Chat $channel
      *
      * @return Channel
      */
-    public function addChannel(\PAFBundle\Entity\Chat $channel)
+    public function addChannel(Chat $channel)
     {
         $this->channels[] = $channel;
 
@@ -93,9 +94,9 @@ class Channel
     /**
      * Remove channel
      *
-     * @param \PAFBundle\Entity\Chat $channel
+     * @param Chat $channel
      */
-    public function removeChannel(\PAFBundle\Entity\Chat $channel)
+    public function removeChannel(Chat $channel)
     {
         $this->channels->removeElement($channel);
     }

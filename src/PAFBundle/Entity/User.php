@@ -2,7 +2,9 @@
 
 namespace PAFBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -33,7 +35,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255)
+     * @ORM\Column(name="picture", type="string")
      */
     private $picture;
 
@@ -42,14 +44,13 @@ class User
      *
      * @ORM\Column(name="gender", type="string", length=255)
      */
-    private $gender = "Undefined";
+    private $gender;
 
     /**
      * @var
      * @ORM\OneToMany(targetEntity="Chat", mappedBy="user")
      */
     private $chats;
-
 
     /**
      * Get id
@@ -137,17 +138,19 @@ class User
      */
     public function __construct()
     {
-        $this->chats = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->chats = new ArrayCollection();
+        $this->picture = "default.png";
+        $this->gender = "Undefined";
     }
 
     /**
      * Add chat
      *
-     * @param \PAFBundle\Entity\Chat $chat
+     * @param Chat $chat
      *
      * @return User
      */
-    public function addChat(\PAFBundle\Entity\Chat $chat)
+    public function addChat(Chat $chat)
     {
         $this->chats[] = $chat;
 
@@ -157,9 +160,9 @@ class User
     /**
      * Remove chat
      *
-     * @param \PAFBundle\Entity\Chat $chat
+     * @param Chat $chat
      */
-    public function removeChat(\PAFBundle\Entity\Chat $chat)
+    public function removeChat(Chat $chat)
     {
         $this->chats->removeElement($chat);
     }

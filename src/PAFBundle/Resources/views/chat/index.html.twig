@@ -31,7 +31,7 @@
                     <tbody>
                         {% for chat in chats %}
                             <tr>
-                                <td>[{{ chat.indicator|date("d/m/Y H:i:s") }}] <strong>{{ chat.name }}</strong> :</td>
+                                <td>[{{ chat.indicator|date("d/m/Y H:i:s") }}] <strong>{{ chat.User.name }}</strong> :</td>
                                 <td>{{ chat.message }}</td>
                             </tr>
                         {% endfor %}
